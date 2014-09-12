@@ -11,5 +11,3 @@ Main Technologies:
 - Bootstrap
 - Gearman
 - ShareJS
-- 
-- 
