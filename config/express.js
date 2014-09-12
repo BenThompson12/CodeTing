@@ -17,7 +17,7 @@ module.exports = function(app, passport) {
     app.set('view engine', 'jade');
     app.set('views', __dirname + '/../app/views');
 
-	app.use(express.cookieParser());
+    app.use(express.cookieParser());
     
     app.use(express.json());
     app.use(express.urlencoded());
@@ -27,7 +27,7 @@ module.exports = function(app, passport) {
     app.use(express.session({
         secret: 'topsecret',
         expires : new Date(Date.now() + cookieExpireTime),
-    	store: sessionStore,
+        store: sessionStore,
     }));
 
     app.use(passport.initialize())

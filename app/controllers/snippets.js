@@ -6,9 +6,9 @@ var mongoose = require('mongoose'),
     timeago  = require('timeago');
 
 exports.collection = function(req, res) {
-	var user = req.user;
+    var user = req.user;
 
-	Snippet.find({ owner: user._id }).sort('-updated').exec(function(err, doc) {
+    Snippet.find({ owner: user._id }).sort('-updated').exec(function(err, doc) {
         var snippets = [];
 
         for(var i = 0; i < doc.length; i++) {
