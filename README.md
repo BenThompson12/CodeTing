@@ -1,4 +1,15 @@
-Interactive Code Snippet Site
+CodeTing - A Secure Online Coding Platform
 
-Dependencies:
+Main Technologies:
+- NodeJS
+- Express
+- Jade
+- SocketIO
+- MongoDB
+- Mongoose
+- jQuery
 - Bootstrap
+- Gearman
+- ShareJS
+- 
+- 
