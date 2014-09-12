@@ -2,47 +2,47 @@ extends ../layout
 
 block content
 
-	div(style="text-align:center; padding-top:20px")
-		button(type="button", onclick="location.href = '/';", class="btn btn-lg btn-default btn-primary")
-			span(class="glyphicon glyphicon-home")
-			|  CodeTing
+    div(style="text-align:center; padding-top:20px")
+        button(type="button", onclick="location.href = '/';", class="btn btn-lg btn-default btn-primary")
+            span(class="glyphicon glyphicon-home")
+            |  CodeTing
 
-	div(class="container-fluid", style="padding-top:20px")
-		div(class="col-xs-6  col-xs-offset-3")
-				div(class="panel panel-primary")
+    div(class="container-fluid", style="padding-top:20px")
+        div(class="col-xs-6  col-xs-offset-3")
+                div(class="panel panel-primary")
 
-					div(class="panel-heading")
-						h1(class="panel-title")
-							| Sign up here
+                    div(class="panel-heading")
+                        h1(class="panel-title")
+                            | Sign up here
 
-					div(class="panel-body")
-						form(method="post", action="/user/signup")#login-form
-							p.subheading Please enter your details below
+                    div(class="panel-body")
+                        form(method="post", action="/user/signup")#login-form
+                            p.subheading Please enter your details below
 
-							div(class="form-group")
-								input(type="text", name="email", placeholder="E-mail address", class="form-control")
+                            div(class="form-group")
+                                input(type="text", name="email", placeholder="E-mail address", class="form-control")
 
-							div(class="form-group")
-								input(type="text", name="username", placeholder="Username", class="form-control")
+                            div(class="form-group")
+                                input(type="text", name="username", placeholder="Username", class="form-control")
 
-							div(class="form-group")
-								input(type="password", name="password", placeholder="Password", spellcheck=false, class="form-control")
+                            div(class="form-group")
+                                input(type="password", name="password", placeholder="Password", spellcheck=false, class="form-control")
 
-							div(class="form-group")
-								input(type="password", name="passwordAgain", placeholder="Password again", spellcheck=false, class="form-control")
+                            div(class="form-group")
+                                input(type="password", name="passwordAgain", placeholder="Password again", spellcheck=false, class="form-control")
 
-							div(class="form-group")
-								button(type="submit", id="btn-login", class="btn btn-default btn-primary")
-									span(class="glyphicon glyphicon-user")
-									|  Create an account
+                            div(class="form-group")
+                                button(type="submit", id="btn-login", class="btn btn-default btn-primary")
+                                    span(class="glyphicon glyphicon-user")
+                                    |  Create an account
 
-							if (messages.length > 0)
-								div(class="alert alert-danger")
-									| Please correct the following:
-									ul
-										each val in messages
-											li= val
+                            if (messages.length > 0)
+                                div(class="alert alert-danger")
+                                    | Please correct the following:
+                                    ul
+                                        each val in messages
+                                            li= val
 
-					div(class="panel-footer")
-						| Already have an account? 
-						a(href="/user/login") Login here
+                    div(class="panel-footer")
+                        | Already have an account? 
+                        a(href="/user/login") Login here
