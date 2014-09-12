@@ -1,0 +1,133 @@
+extends layout
+
+block content
+    nav(id="navbar" class="navbar navbar-inverse" role="navigation" style="padding-bottom:0px; margin-bottom:1px")
+
+        div(class="navbar-header")
+            a(class="navbar-brand" href="#")
+                | CodeTing
+
+        ul(class="nav navbar-nav")
+            li(class="dropdown")
+                a(id="selectedLanguage", href="#", class="dropdown-toggle", data-toggle="dropdown")   
+                    | Python
+                    b(class="caret")
+
+                ul(id="language", class="dropdown-menu")
+                    li
+                        a(href="#") Python
+                    li
+                        a(href="#") Java
+                    li
+                        a(href="#") Javascript
+
+            li
+                a(id="run", href="#")
+                    span(class="glyphicon glyphicon-cog")
+                    | Run
+
+
+            li
+                a(id="new", href="#")
+                    span(class="glyphicon glyphicon-file")
+                    | New
+
+            li(class="dropdown", id="info" style="display: none;")
+                a(class="dropdown-toggle", data-toggle="dropdown", href="#info")
+                    span(class="glyphicon glyphicon-edit")
+                    |  Info
+                div(class="dropdown-menu", style="padding:10px; width:320px;")
+                    form
+                        | Snippet name:
+                        input(type="text", id="snippetName", style="width:300px;", value="Untitled")
+                        | Tags:
+                        input(type="text", id="tags", style="width:300px; font-size: 18px; ")
+                        p
+                        button(type="button" id="save-info" class="btn btn-primary btn-md") Save info
+
+
+            li
+                a(id="save", href="#", title="Ctrl+S" style="display: none;")
+                    span(class="glyphicon glyphicon-floppy-disk")
+                    | Save
+
+            li(class="dropdown", id="menu1" style="display: none;")
+                a(class="dropdown-toggle", data-toggle="dropdown", href="#menu1")
+                    span(class="glyphicon glyphicon-share")
+                    | Share
+                div(class="dropdown-menu", style="padding:10px; width:190px;")
+                    form
+                        | Share this link
+                        input(type="text", id="share", style="width:170px;", value="")
+
+            if id
+                li
+                    a(id="fork", href="#" style="display: none;")
+                        span(class="glyphicon glyphicon-share-alt")
+                        | Fork
+
+        
+                
+            form(class="navbar-form navbar-left" role="enable-collab")
+                button(id="enable-collab", class="btn btn-default btn-sm", style="margin-top:5px; display: none;" type="button") Enable Collab Mode
+                button(id="disable-collab", class="btn btn-warning btn-sm", style="margin-top:5px; display: none;" type="button") Disable Collab Mode
+
+                       
+        ul(class="nav navbar-nav navbar-right")
+            if !loggedIn
+                    li
+                        a(href="/user/signup") Sign Up
+                    li
+                        a(href="/user/login" style="padding-right:30px;") Login
+
+            if loggedIn
+                li(class = "dropdown")
+                    a(href="#", class="dropdown-toggle", data-toggle="dropdown" style="padding-right:30px;") 
+                        | #{user.username} 
+                        span(class="glyphicon glyphicon-user")  
+                    ul(class="dropdown-menu")
+                        li
+                            a(href="/snippet/collection") Your Snippets
+                        li
+                            a(href="/user/manage") Manage Account
+                        li
+                            a(href="/user/logout") Logout
+
+    
+
+    div(class="col-xs-12" id="main" style="padding:0")
+        div(class="panel panel-default col-xs-8" style="padding: 0px; margin: 0px;")
+            div(id="editorContainer", class="panel-body" style="padding:0px")
+                div(class="col-xs-12", id="editor" style="padding: 3px; border-right: 3px solid #C9C7C8;")
+        div(class="col-xs-4" style="padding:0")
+            div(id="outputContainer" style="position: relative;")
+                textarea(id="output" readonly disabled style="position: relative; width: 100%; height:100%; font-family:courier; color: #1C1C1C")  
+            div(id="chatContainer" style="position: relative; height: 250px; border-top: 3px solid #C9C7C8;")
+                textarea(id="chatbox" style="height: 205px; width: 100%; border: none;")
+                input(class="form-control input-sm" type="text" id="message" placeholder="Send a message here")
+
+
+    script(src='/bindings/index.js')
+    script(src='/ajax/snippet.js')
+    script(src='/ajax/session.js')
+    script(src='/socket/chat.js')
+
+    include collab-modal
+    include displayname-modal
+    include loading-div
+    include end-collab-modal
+
+
+    script(type='text/javascript')
+        | var editor = ace.edit("editor");
+        | editor.setTheme("ace/theme/chrome");
+        | var aceSession = editor.getSession();
+        | aceSession.setMode("ace/mode/python");
+        | aceSession.setUseWrapMode(true);
+        | aceSession.setUseWorker(false);
+
+    script(type='text/javascript')
+        | var socket = io.connect();
+
+        if id
+            | window.id = '#{id}';

@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/external/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+    link(href="/external/tag-it/css/jquery.tagit.css" rel="stylesheet" type="text/css")
+    link(href="/external/tag-it/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css")
+
+
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8")
+    script(src='/external/bootstrap/js/bootstrap.js')
+    script(src='/external/ace-builds/src-noconflict/ace.js', type='text/javascript' charset='utf-8')
+    script(src='/external/spin/spin.js')
+    script(src='/external/growl/jquery.bootstrap-growl.js')
+    script(src='/external/mousetrap/mousetrap.min.js')
+    script(src='/external/pubsub/pubsub.js')
+    script(src="/external/tag-it/js/tag-it.js" type="text/javascript" charset="utf-8")
+    
+
+    script(src='/socket.io/socket.io.js')
+    script(src='/scripts/style.js')
+    script(src='/wrappers/spinner.js')
+
+
+    script(src="/channel/bcsocket.js")
+    script(src="/share/share.js")
+    script(src="/share/ace.js")
+    
+
+  body
+    block content

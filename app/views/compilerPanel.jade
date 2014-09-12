@@ -1,0 +1,16 @@
+div(id="compilerPanel", class="panel panel-default", style='background-color:#F0F0F0')
+        
+    div(class="panel-body")
+
+        | <b>Standard Input (stdin): </font></b>
+        textarea(id="stdin" style="height: 30px; width: 100%;")
+        <p>
+
+        
+        button(id="run", type="button", class="btn btn-success", style="width: 100px;", title="Ctrl+R")
+            span(class="glyphicon glyphicon-play")
+            | Run
+
+        | <p><b> Output: </font></b>
+        div(id="outputContainer" style="position: relative")
+            textarea(id="output" readonly disabled style="position: relative; width: 100%; font-family:courier;")
